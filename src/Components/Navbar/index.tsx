@@ -1,7 +1,7 @@
 import { css } from "@emotion/css";
-import { FC } from "react";
-
-import useToggle from "hooks/useToggle";
+import { MenuContext } from "App";
+import { FC, useContext } from "react";
+import { color } from "style/theme";
 
 import NavToggleButton from "../Content/Header/Components/NavToggleButton";
 import MenuList from "./MenuList";
@@ -9,15 +9,15 @@ import MenuList from "./MenuList";
 interface NavbarProps {}
  
 const Navbar: FC<NavbarProps> = () => {
-  const [navOpen, navToggle] = useToggle(false);
+  const {open, toggle} = useContext(MenuContext);
 
   return (
     <aside className={asideCls}>
       <div className={headerWrap}>
-        <NavToggleButton isOpen={navOpen} onClick={navToggle} />
+        <NavToggleButton isOpen={open} onClick={toggle} />
       </div>
 
-      <MenuList isOpen={navOpen}/>
+      <MenuList isOpen={open}/>
     </aside>
   );
 }
@@ -32,8 +32,6 @@ const asideCls = css`
 `;
 
 const headerWrap = css`
-  position: sticky;
-  top: 0;
   height: 70px;
   display: flex;
   align-items:center;

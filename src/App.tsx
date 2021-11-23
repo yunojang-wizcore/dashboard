@@ -1,18 +1,30 @@
+import { createContext, useMemo } from "react";
 import { css } from "@emotion/css";
 
 import { color, CONTENT_WIDTH, range } from "style/theme";
 
 import Navbar from "Components/Navbar";
 import Content from "Components/Content";
+import useToggle from "hooks/useToggle";
+
+export const MenuContext = createContext({
+  open: false,
+  toggle: () => {},
+});
 
 function App() {
+  const [open, toggle] = useToggle(false);
+  const value = useMemo(()=>({open,toggle}),[open,toggle])
+
   return (
     <main className={app}>
-      <div className={container}>
-        <Navbar />
+      <MenuContext.Provider value={value}>
+        <div className={container}>
+          <Navbar />
 
-        <Content />
-      </div>
+          <Content />
+        </div>
+      </MenuContext.Provider>
     </main>
   );
 }
