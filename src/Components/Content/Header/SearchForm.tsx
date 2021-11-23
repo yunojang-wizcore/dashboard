@@ -27,7 +27,7 @@ const formCls = css`
 
 const inputCls = css`
   padding: 0 2rem;
-  height: 100%;
+  height: 90%;
   width: 100%;
   line-height: 1.7;
   border-radius: 50rem;

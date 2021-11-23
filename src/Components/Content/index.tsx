@@ -21,5 +21,6 @@ export default Conetent;
 
 const content = css`
   width: 100%;
-  margin-left: 2em;
+  min-height: 100vh;
+  margin-left: 4em;
 `;

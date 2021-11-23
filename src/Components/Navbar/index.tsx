@@ -4,6 +4,7 @@ import { FC } from "react";
 import useToggle from "hooks/useToggle";
 
 import NavToggleButton from "../Content/Header/Components/NavToggleButton";
+import MenuList from "./MenuList";
 
 interface NavbarProps {}
  
@@ -16,7 +17,7 @@ const Navbar: FC<NavbarProps> = () => {
         <NavToggleButton isOpen={navOpen} onClick={navToggle} />
       </div>
 
-      {/* menulist */}
+      <MenuList isOpen={navOpen}/>
     </aside>
   );
 }
@@ -24,12 +25,15 @@ const Navbar: FC<NavbarProps> = () => {
 export default Navbar;
 
 const asideCls = css`
+  position: fixed;
   display: flex;
   flex-direction: column;
-  gap: 5em;
+  gap: 1em;
 `;
 
 const headerWrap = css`
+  position: sticky;
+  top: 0;
   height: 70px;
   display: flex;
   align-items:center;
