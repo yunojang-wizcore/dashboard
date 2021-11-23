@@ -1,4 +1,5 @@
 import { FC, MouseEventHandler } from "react";
+import ToggleButton from "Components/ToggleButton";
 
 interface ToggleDarkButtonProps {
   isOpen : boolean,
@@ -9,7 +10,9 @@ const ToggleDarkButton: FC<ToggleDarkButtonProps> = ({onClick, isOpen:isDark}) =
   const tempText:string = isDark ? 'day' : 'dark';
   
   return (
-    <button onClick={onClick}>{tempText}</button>
+    <ToggleButton onClick={onClick}>
+      <span>{tempText}</span>
+    </ToggleButton>
   );
 }
  

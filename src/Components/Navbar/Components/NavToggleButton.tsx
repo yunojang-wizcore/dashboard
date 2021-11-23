@@ -2,6 +2,7 @@ import { FC, MouseEventHandler } from "react";
 import { css } from "@emotion/css";
 
 import NavToggleIcon from "./NavToggleIcon";
+import ToggleButton from "Components/ToggleButton";
 
 interface NavToggleButtonProps {
   isOpen : boolean,
@@ -10,9 +11,9 @@ interface NavToggleButtonProps {
  
 const NavToggleButton: FC<NavToggleButtonProps> = ({onClick, isOpen}) => {
   return (
-    <button className={buttonWrapCls} onClick={onClick}>
+    <ToggleButton onClick={onClick}  className={buttonWrapCls}>
       <NavToggleIcon isOpen={isOpen}/>
-    </button>
+    </ToggleButton>
   );
 }
  
