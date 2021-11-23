@@ -4,14 +4,15 @@ import { color } from "style/theme";
 
 interface MenuItemProps {
   menu:any
+  isOpen:boolean
 }
  
-const MenuItem: FC<MenuItemProps> = ({menu}) => {
+const MenuItem: FC<MenuItemProps> = ({menu, isOpen}) => {
   return (
     <div className={item}>
       <div className={icon}></div>
 
-      <div>{menu.name}</div>
+      {isOpen && <div className={link}>{menu.name}</div>}
     </div>
   );
 }
@@ -25,8 +26,13 @@ const item = css`
 `;
 
 const icon = css`
-  width: 20px;
-  height: 20px;
+  width: 21px;
+  height: 21px;
   background: ${color.testColor};
   border-radius: 50%;
 `
+const link = css`
+  cursor: pointer;
+  transform-origin: left;
+  animation: .2s slide cubic-bezier(0,0,0,1);
+`;

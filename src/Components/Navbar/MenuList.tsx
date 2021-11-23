@@ -8,13 +8,9 @@ interface MenuListProps {
 }
  
 const MenuList: FC<MenuListProps> = ({isOpen}) => {
-  if (!isOpen) {
-    return null
-  }
-
   return (
     <ul className={listCls}>
-      {MENU_LIST.map((menu, i) => <MenuItem key={i} menu={menu}/>)}
+      {MENU_LIST.map((menu, i) => <MenuItem key={i} menu={menu} isOpen={isOpen}/>)}
     </ul>
   );
 }
@@ -26,15 +22,5 @@ const listCls = css`
   flex-direction: column;
   gap: 1em;
 
-  @keyframes slide{
-    from {
-      transform: scaleX(0);
-    }
-    to {
-      transform: scaleX(1);
-    }
-  }
-
-  transform-origin: left;
-  animation: .2s slide cubic-bezier(0,0,0,1);
+  
 `;

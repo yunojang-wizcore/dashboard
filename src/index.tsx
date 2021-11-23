@@ -25,6 +25,15 @@ const globalStyle = css`
   ul {
     list-style-type: none;
   }
+
+  @keyframes slide{
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
 `;
 
 ReactDOM.render(
