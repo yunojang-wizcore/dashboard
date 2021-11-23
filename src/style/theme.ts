@@ -6,6 +6,8 @@ export const size = {
   mobile: '576px',
 }
 
+export const CONTENT_WIDTH:number[] = [1480, 1140, 960, 720, 540];
+
 export const range = {
   desktop: `(min-width: ${size.desktop})`,
   labtop: `(min-width: ${size.labtop})`,
@@ -17,4 +19,8 @@ export const range = {
 export const color = {
   mainColor: '#edf2f9',
   testColor: "#bbbbee"
+}
+
+export const color_dark = {
+  
 }
