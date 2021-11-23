@@ -7,9 +7,6 @@ import App from 'App';
 const globalStyle = css`
   * {
     box-sizing: border-box;
-  }
-
-  html,body  {
     margin: 0;
     padding: 0;
   }
@@ -17,7 +14,16 @@ const globalStyle = css`
   button {
     cursor: pointer;
     border: none;
+    user-select: none;
     background: none;
+  }
+
+  input {
+    outline: none;
+  }
+
+  ul {
+    list-style-type: none;
   }
 `;
 
