@@ -32,7 +32,8 @@ const icon = css`
   border-radius: 50%;
 `
 const link = css`
-  cursor: pointer;
+  width: 8em;
   transform-origin: left;
   animation: .2s slide cubic-bezier(0,0,0,1);
+  cursor: pointer;
 `;

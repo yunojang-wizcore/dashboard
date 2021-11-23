@@ -1,7 +1,8 @@
 import { FC } from "react";
+import { css } from "@emotion/css";
+
 import MENU_LIST from "mock/menuList";
 import MenuItem from "./MenuItem";
-import { css } from "@emotion/css";
 
 interface MenuListProps {
   isOpen: boolean
@@ -21,6 +22,4 @@ const listCls = css`
   display: flex;
   flex-direction: column;
   gap: 1em;
-
-  
 `;
