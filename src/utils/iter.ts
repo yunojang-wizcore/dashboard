@@ -16,3 +16,7 @@ export const map = <A,R>(f:(arg:A,idx:number)=>R,iter:IterableIterator<A>):R[] =
 
   return res;
 }
+
+// export const reduce = (f, acc, iter) => {
+
+// }

@@ -5,7 +5,7 @@ import MENU_LIST from "mock/menuList";
 import MenuName from "./MenuName";
 import { ThemeContext } from "App";
 import MenuIcon from "./MenuIcon";
-import { color, color_dark, size } from "style/theme";
+import { color, color_dark, createMediaQuery, size } from "style/theme";
 
 interface MenuListProps {
   isOpen: boolean
@@ -69,7 +69,12 @@ const list = css`
       height: ${height};
       background: ${color.main};
       opacity: 0.9;
-      width: 960px;
+
+      ${createMediaQuery((m,c)=>`
+        @media (min-width: ${m}px) {
+          width: ${c}px;
+        }
+      `)}
       
       &.dark {
         background: ${color_dark.main};

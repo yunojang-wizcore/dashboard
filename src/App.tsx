@@ -1,7 +1,7 @@
 import { createContext, useEffect, useMemo } from "react";
 import { css } from "@emotion/css";
 
-import { size, color, color_dark } from "style/theme";
+import { color, color_dark, createMediaQuery } from "style/theme";
 import { KEY_NAME, load, save } from "utils/localStorage";
 import useToggle from "hooks/useToggle";
 
@@ -49,16 +49,6 @@ function App() {
 
 export default App;
 
-const createMediaWidth = (s:number, w:number) => ` 
-  @media (min-width:${s}px) {
-    width: ${w}px;
-  }
-`
-
-const responsiveStyle = 
-  Object.values(size).reverse()
-  .reduce((style, s) => style + createMediaWidth(s.min, s.content),"");
-
 const app = css`
   background: ${color.main};
 
@@ -73,8 +63,12 @@ const app = css`
 `;
 
 const container= css`
-    display: flex;
-    margin: auto;
+  display: flex;
+  margin: auto;
 
-    ${responsiveStyle}
+  ${createMediaQuery((m:number, c:number) => ` 
+    @media (min-width:${m}px) {
+      width: ${c}px;
+    }
+  `)}
 `;

@@ -24,3 +24,10 @@ export const color_dark = {
   font : "#9da9bb",
   block : "#121e2d",
 }
+
+type QueryFunc = (m:number, c:number)=>string
+
+export const createMediaQuery = (f: QueryFunc):string => {
+  return Object.values(size).reverse()
+    .reduce((style, s) => style + f(s.min, s.content),"");
+}
