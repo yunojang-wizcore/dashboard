@@ -20,6 +20,19 @@ const MENU_LIST = [
   {name: 'social'},
   {name: 'social'},
   {name: 'social'},
+  {name: 'social'},
+  {name: 'social'},
+  {name: 'social'},
+  {name: 'social'},
+  {name: 'social'},
+  {name: 'social'},
+  {name: 'social'},
+  {name: 'social'},
+  {name: 'social'},
+  {name: 'social'},
+  {name: 'social'},
+  {name: 'social'},
+  {name: 'social'},
 ]
 
 export default MENU_LIST
