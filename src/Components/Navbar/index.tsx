@@ -5,6 +5,7 @@ import { color } from "style/theme";
 
 import NavToggleButton from "./Components/NavToggleButton";
 import MenuList from "./MenuList";
+import ContentHeader from "Components/Content/Header";
 
 interface NavbarProps {}
  
@@ -17,6 +18,8 @@ const Navbar: FC<NavbarProps> = () => {
         <NavToggleButton isOpen={open} onClick={toggle} />
 
         <div className={logoWrapper}></div>
+
+        {/* <ContentHeader /> */}
       </div>
 
       <MenuList isOpen={open}/>
@@ -30,7 +33,6 @@ const asideCls = css`
   position: fixed;
   display: flex;
   flex-direction: column;
-  gap: 1em;
   z-index: 5;
 `;
 

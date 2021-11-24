@@ -26,12 +26,21 @@ const globalStyle = css`
     list-style-type: none;
   }
 
-  @keyframes slide{
+  @keyframes slideX{
     from {
       transform: scaleX(0);
     }
     to {
       transform: scaleX(1);
+    }
+  }
+
+  @keyframes slideY{
+    from {
+      transform: scaleY(0);
+    }
+    to {
+      transform: scaleY(1);
     }
   }
 `;

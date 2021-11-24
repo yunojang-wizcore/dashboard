@@ -11,12 +11,16 @@ interface ConetentProps {
 }
  
 const Conetent: FC<ConetentProps> = () => {
-  const {open} = useContext(MenuContext);
+  const {open :isOpen} = useContext(MenuContext);
   const {isDark} = useContext(ThemeContext);
 
-  const classes = `${mainContent} ${open && 'open'}`;
-  const cardClasses = `${card} ${isDark && 'dark'}`;
-  const bigCardClasses = `big ${card} ${isDark && 'dark'}`;
+  const dark = isDark ? 'dark' : '';
+  const open = isOpen ? 'open' : '';
+
+  const classes = `${mainContent} ${open}`;
+
+  const cardClasses = `${card} ${dark}`;
+  const bigCardClasses = `big ${card} ${dark}`;
   
   const listDiv = (l: number, className:string) => map<number, JSX.Element>((n)=>
     <div key={n} className={className}><h1>Test Block</h1></div>
@@ -77,6 +81,7 @@ const row = css`
   flex-wrap: wrap;
   gap: 1em;
   margin-bottom: 1em;
+  padding: 0 .5em;
 `;
 
 const card = css`
@@ -86,6 +91,10 @@ const card = css`
   border-radius: 4px;
   padding: .5em;
   box-shadow: rgba(65, 69, 88, 0.1) 0px 7px 14px 0px, rgba(0, 0, 0, 0.07) 0px 3px 6px 0px;
+
+  @media (max-width: ${size.desktop}) {
+    min-width: 350px;
+  }
 
   &>h1 {
     font-size: 17px;

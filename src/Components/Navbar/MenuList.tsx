@@ -2,9 +2,10 @@ import { FC, useContext } from "react";
 import { css } from "@emotion/css";
 
 import MENU_LIST from "mock/menuList";
-import MenuItem from "./MenuItem";
-import { size } from "style/theme";
+import MenuName from "./MenuName";
 import { ThemeContext } from "App";
+import MenuIcon from "./MenuIcon";
+import { color, color_dark, size } from "style/theme";
 
 interface MenuListProps {
   isOpen: boolean
@@ -18,22 +19,34 @@ const MenuList: FC<MenuListProps> = ({isOpen}) => {
   const classes = `${list} ${open} ${dark}`;
 
   return (
-    <ul className={classes}>
-      {MENU_LIST.map((menu, i) => <MenuItem key={i} menu={menu} isOpen={isOpen}/>)}
-    </ul>
+    <div className={classes}>
+      <ul>
+        {MENU_LIST.map((menu, i) => <MenuIcon key={i} icon={menu.icon} isOpen={isOpen}/>)}
+      </ul>
+      <ul>
+        {MENU_LIST.map((menu, i) => <MenuName key={i} name={menu.name} isOpen={isOpen}/>)}
+      </ul>
+    </div>
   );
 }
  
 export default MenuList;
 
+const height = 'calc(100vh - 70px)';
+                                                                                                                                                                                                                                                                                           
 const list = css`
+  height: ${height};
   display: flex;
-  flex-direction: column;
   gap: 1em;
-  height: calc(100vh - 70px - 1em);
 
   &.open {
     overflow-y: scroll;
+  }
+
+  &>ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
   }
 
   ::-webkit-scrollbar {
@@ -41,7 +54,7 @@ const list = css`
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #ccc;
+    background: #afbac8;
     border-radius: 10px;
   }
   &.dark::-webkit-scrollbar-thumb {
@@ -49,6 +62,18 @@ const list = css`
   }
 
   @media (max-width :${size.labtop}) {
-    display: none;
+    transition: .2s;
+    height: 0px;
+
+    &.open {
+      height: ${height};
+      background: ${color.main};
+      opacity: 0.9;
+      width: 960px;
+      
+      &.dark {
+        background: ${color_dark.main};
+      }
+    }
   }  
 `;
