@@ -37,7 +37,7 @@ const asideCls = css`
 const headerWrap = css`
   height: 70px;
   display: flex;
-  gap: 6px;
+  gap: 1em;
   align-items: center;
 `;
 

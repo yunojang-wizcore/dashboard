@@ -24,6 +24,8 @@ const NavToggleButton: FC<NavToggleButtonProps> = ({onClick, isOpen}) => {
 export default NavToggleButton;
 
 const cls = css`
+  position: relative;
+  left: -6px;
   width: 40px;
   height: 40px;
   padding: 6px;
