@@ -58,7 +58,7 @@ const content = css`
   min-height: 100vh;
   margin-left: 4em;
 
-  @media (max-width :${size.labtop}) {
+  @media (max-width :${size.labtop.min}px) {
     margin-left: 0;
   }  
 `;
@@ -69,7 +69,7 @@ const mainContent = css`
   &.open {
     margin-left: 8em;
     
-    @media (max-width :${size.labtop}) {
+    @media (max-width :${size.labtop.min}px) {
       transition: none;
       margin-left: 0;
     } 
@@ -92,7 +92,7 @@ const card = css`
   padding: .5em;
   box-shadow: rgba(65, 69, 88, 0.1) 0px 7px 14px 0px, rgba(0, 0, 0, 0.07) 0px 3px 6px 0px;
 
-  @media (max-width: ${size.desktop}) {
+  @media (max-width: ${size.desktop.min}px) {
     min-width: 350px;
   }
 

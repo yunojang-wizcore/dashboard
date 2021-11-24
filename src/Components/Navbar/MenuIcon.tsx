@@ -1,5 +1,5 @@
 import { css } from "@emotion/css";
-import { MenuContext, ThemeContext } from "App";
+import { ThemeContext } from "App";
 import { FC, useContext } from "react";
 import { color_dark, size } from "style/theme";
 
@@ -27,7 +27,7 @@ const cls = css`
   border-radius: 50%;
   background: #5e6e82;
 
-  @media (max-width :${size.labtop}) {
+  @media (max-width :${size.labtop.min}px) {
     display: none;
     
     &.open {

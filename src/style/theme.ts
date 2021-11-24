@@ -1,19 +1,17 @@
 export const size = {
-  desktop: '1540px',
-  labtop: '1200px',
-  tablet :'992px',
-  tabletSmall: '768px',
-  mobile: '576px',
+  desktop: {min:1540, content:1480},
+  labtop: {min:1200, content:1140},
+  tablet : {min:992, content:960},
+  tabletSmall: {min:768, content:720},
+  mobile: {min:576, content:540},
 }
 
-export const CONTENT_WIDTH:number[] = [1480, 1140, 960, 720, 540];
-
 export const range = {
-  desktop: `(min-width: ${size.desktop})`,
-  labtop: `(min-width: ${size.labtop})`,
-  tablet: `(min-width: ${size.tablet})`,
-  tabletSmall: `(min-width: ${size.tabletSmall})`,
-  mobile: `(min-width: ${size.mobile})`,
+  desktop: `(min-width: ${size.desktop.min}px)`,
+  labtop: `(min-width: ${size.labtop.min}px)`,
+  tablet: `(min-width: ${size.tablet.min}px)`,
+  tabletSmall: `(min-width: ${size.tabletSmall.min}px)`,
+  mobile: `(min-width: ${size.mobile.min}px)`,
 }
 
 export const color = {

@@ -61,7 +61,7 @@ const list = css`
     background: #334455;
   }
 
-  @media (max-width :${size.labtop}) {
+  @media (max-width :${size.labtop.min}px) {
     transition: .2s;
     height: 0px;
 

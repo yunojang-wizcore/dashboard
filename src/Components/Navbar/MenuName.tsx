@@ -36,7 +36,7 @@ const link = css`
     color: ${color_dark.font};
   }
 
-  @media (max-width :${size.labtop}) {
+  @media (max-width :${size.labtop.min}px) {
     animation: none;
   }  
 `;

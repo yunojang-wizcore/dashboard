@@ -1,7 +1,7 @@
 import { createContext, useEffect, useMemo } from "react";
 import { css } from "@emotion/css";
 
-import { color, color_dark, CONTENT_WIDTH, range } from "style/theme";
+import { size, color, color_dark } from "style/theme";
 import { KEY_NAME, load, save } from "utils/localStorage";
 import useToggle from "hooks/useToggle";
 
@@ -49,16 +49,15 @@ function App() {
 
 export default App;
 
-const createMedia = (info:{range:string, maxWidth:number}) => ` 
-  @media ${info.range} {
-    max-width: ${info.maxWidth}px;
+const createMediaWidth = (s:number, w:number) => ` 
+  @media (min-width:${s}px) {
+    width: ${w}px;
   }
 `
 
 const responsiveStyle = 
-  Object.values(range)
-  .map((range,i) =>({maxWidth: CONTENT_WIDTH[i], range})).reverse()
-  .reduce((style,info) => style + createMedia(info),"");
+  Object.values(size).reverse()
+  .reduce((style, s) => style + createMediaWidth(s.min, s.content),"");
 
 const app = css`
   background: ${color.main};

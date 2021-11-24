@@ -58,7 +58,7 @@ const rightPanel = css`
   justify-content: space-between;
   align-items: center;
 
-  @media (max-width :${size.tablet}) {
+  @media (max-width :${size.tablet.min}px) {
     justify-content: flex-end;
   }  
 `;
