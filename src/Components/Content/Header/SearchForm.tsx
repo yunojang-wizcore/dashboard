@@ -25,7 +25,7 @@ const formCls = css`
   height: 100%;
   width: 22em;
 
-  @media (max-width :${size.labtop}) {
+  @media (max-width :${size.tablet}) {
     display: none;
   }  
 `;

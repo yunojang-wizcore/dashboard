@@ -20,9 +20,6 @@ const Header: FC<HeaderProps> = () => {
 
   return (
     <header className={headerCls}>
-      <div className={leftPanel}>
-        <div className={logoWrapper}></div>
-      </div>
 
       <div className={rightPanel}>
         <SearchForm />
@@ -47,15 +44,11 @@ const header = css`
   display: flex;
   gap: 5em;
   background: ${color.main};
+  padding-left: 11em;
 
   &.dark{ 
     background: ${color_dark.main};
   }
-`;
-
-const leftPanel = css`
-  display: flex;
-  padding: 1em 0;
 `;
 
 const rightPanel = css`
@@ -65,7 +58,7 @@ const rightPanel = css`
   justify-content: space-between;
   align-items: center;
 
-  @media (max-width :${size.labtop}) {
+  @media (max-width :${size.tablet}) {
     justify-content: flex-end;
   }  
 `;
@@ -74,11 +67,3 @@ const menuCls = css`
   display: flex;
   gap: 1em;
 `;
-
-const logoWrapper = css`
-  height: 100%;
-  width: 100px;
-  overflow: hidden;
-  border-radius: 6px;
-  background: ${color.test};
-`

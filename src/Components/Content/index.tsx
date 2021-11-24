@@ -4,7 +4,7 @@ import { css } from "@emotion/css";
 import Header from "./Header";
 import { map, range } from "utils/iter";
 import { MenuContext, ThemeContext } from "App";
-import { color_dark } from "style/theme";
+import { color_dark, size } from "style/theme";
 
 interface ConetentProps {
   
@@ -36,6 +36,10 @@ const Conetent: FC<ConetentProps> = () => {
         <div className={row}>
           {listDiv(2, cardClasses)}
         </div>
+
+        <div className={row}>
+          {listDiv(4, cardClasses)}
+        </div>
       </div>
     </div>
   );
@@ -47,13 +51,22 @@ const content = css`
   width: 100%;
   min-height: 100vh;
   margin-left: 4em;
+
+  @media (max-width :${size.labtop}) {
+    margin-left: 0;
+  }  
 `;
 
 const mainContent = css`
   transition: .2s cubic-bezier(0,0,0,1);
-  
+
   &.open {
     margin-left: 8em;
+    
+    @media (max-width :${size.labtop}) {
+      transition: none;
+      margin-left: 0;
+    } 
   }
 `;
 
