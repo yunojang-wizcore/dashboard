@@ -17,10 +17,12 @@ export const range = {
 }
 
 export const color = {
-  mainColor: '#edf2f9',
-  testColor: "#bbbbee"
+  main: '#edf2f9',
+  test: "#2c7be5"
 }
 
 export const color_dark = {
-  
+  main : "#0b1727",
+  font : "#9da9bb",
+  block : "#121e2d",
 }

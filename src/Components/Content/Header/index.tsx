@@ -1,8 +1,8 @@
 import { css } from "@emotion/css";
-import { FC } from "react";
+import { FC, useContext } from "react";
 
-import { color, size } from "style/theme";
-import useToggle from "hooks/useToggle";
+import { color, color_dark, size } from "style/theme";
+import { ThemeContext } from "App";
 
 import SearchForm from "./SearchForm";
 import UserMenu from "./UserMenu";
@@ -13,7 +13,10 @@ interface HeaderProps {
 }
  
 const Header: FC<HeaderProps> = () => {
-  const [isDark, toggle] = useToggle(false);
+  const {isDark, toggle} = useContext(ThemeContext);
+
+  const dark = isDark ? 'dark' : '';
+  const headerCls = `${header} ${dark}`;
 
   return (
     <header className={headerCls}>
@@ -23,8 +26,9 @@ const Header: FC<HeaderProps> = () => {
 
       <div className={rightPanel}>
         <SearchForm />
+
         <div className={menuCls}>
-          <ToggleDarkButton isOpen={isDark} onClick={toggle} />
+          <ToggleDarkButton isDark={isDark} onClick={toggle} />
           <UserMenu />
         </div>
       </div>
@@ -35,13 +39,18 @@ const Header: FC<HeaderProps> = () => {
  
 export default Header;
 
-const headerCls = css`
+const header = css`
   position: sticky;
   top: 0;
   height: 70px;
   width: 100%;
   display: flex;
   gap: 5em;
+  background: ${color.main};
+
+  &.dark{ 
+    background: ${color_dark.main};
+  }
 `;
 
 const leftPanel = css`
@@ -71,5 +80,5 @@ const logoWrapper = css`
   width: 100px;
   overflow: hidden;
   border-radius: 6px;
-  background: ${color.testColor};
+  background: ${color.test};
 `

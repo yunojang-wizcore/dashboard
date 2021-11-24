@@ -7,6 +7,7 @@ interface UserMenuProps {
 }
  
 const UserMenu: FC<UserMenuProps> = () => {
+
   return (
     <ul className={userMenu}>
       <li></li>
@@ -24,10 +25,10 @@ const userMenu = css`
   align-items: center;
   gap: 4px;
 
-  li {
+  &>li {
     width: 2em;
     height: 2em;
-    background: ${color.testColor};
+    background: ${color.test};
     border-radius: 50%;
     flex: 1;
   }

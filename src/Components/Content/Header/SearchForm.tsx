@@ -1,15 +1,20 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 import { css } from "@emotion/css";
-import { size } from "style/theme";
+
+import { color_dark, size } from "style/theme";
+import { ThemeContext } from "App";
 
 interface SearchFormProps {
   
 }
  
 const SearchForm: FC<SearchFormProps> = () => {
+  const {isDark} = useContext(ThemeContext);
+  const inputClasses = `${inputCls} ${isDark && 'dark'}`;
+
   return (
     <form className={formCls}>
-      <input className={inputCls} placeholder="Search..."/>
+      <input className={inputClasses} placeholder="Search..."/>
     </form>
   );
 }
@@ -34,7 +39,16 @@ const inputCls = css`
   border: 1px solid #ccc;
   font-size: 18px;
 
+  &.dark {
+    background: ${color_dark.main};
+    border: 1px solid #777;
+    color: ${color_dark.font};
+  }
+
   &::placeholder {
     color: #ccccd0;
+  }
+  &.dark::placeholder {
+    color: #777;
   }
 `;

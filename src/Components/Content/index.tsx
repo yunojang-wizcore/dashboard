@@ -2,8 +2,9 @@ import { FC, useContext } from "react";
 import { css } from "@emotion/css";
 
 import Header from "./Header";
-import { map, range } from "utils";
-import { MenuContext } from "App";
+import { map, range } from "utils/iter";
+import { MenuContext, ThemeContext } from "App";
+import { color_dark } from "style/theme";
 
 interface ConetentProps {
   
@@ -11,9 +12,13 @@ interface ConetentProps {
  
 const Conetent: FC<ConetentProps> = () => {
   const {open} = useContext(MenuContext);
-  const classes = `${mainContent} ${open&&'open'}`;
+  const {isDark} = useContext(ThemeContext);
+
+  const classes = `${mainContent} ${open && 'open'}`;
+  const cardClasses = `${card} ${isDark && 'dark'}`;
+  const bigCardClasses = `big ${card} ${isDark && 'dark'}`;
   
-  const listDiv = (l: number, className:string) => map<number, JSX.Element>((n)=><div key={n} className={className}/>, range(l));
+  const listDiv = (l: number, className:string) => map<number, JSX.Element>((n)=><div key={n} className={className}>Test Block</div>, range(l));
   
   return (
     <div className={content}>
@@ -21,15 +26,15 @@ const Conetent: FC<ConetentProps> = () => {
 
       <div className={classes}>
         <div className={row}>
-          {listDiv(4,card)}
+          {listDiv(4, cardClasses)}
         </div>
 
         <div className={row}>
-          {listDiv(2,`${card} big`)}
+          {listDiv(2, bigCardClasses)}
         </div>
 
         <div className={row}>
-          {listDiv(2,card)}
+          {listDiv(2, cardClasses)}
         </div>
       </div>
     </div>
@@ -70,5 +75,10 @@ const card = css`
   &.big {
     min-width: 400px;
     min-height: 300px;
+  }
+
+  &.dark {
+    background: ${color_dark.block};
+    color: ${color_dark.font}
   }
 `;

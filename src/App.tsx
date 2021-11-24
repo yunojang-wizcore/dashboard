@@ -1,42 +1,55 @@
-import { createContext, useMemo } from "react";
+import { createContext, useEffect, useMemo } from "react";
 import { css } from "@emotion/css";
 
-import { color, CONTENT_WIDTH, range } from "style/theme";
+import { color, color_dark, CONTENT_WIDTH, range } from "style/theme";
+import { KEY_NAME, load, save } from "utils/localStorage";
+import useToggle from "hooks/useToggle";
 
 import Navbar from "Components/Navbar";
 import Content from "Components/Content";
-import useToggle from "hooks/useToggle";
 
 export const MenuContext = createContext({
   open: false,
   toggle: () => {},
 });
 
+export const ThemeContext = createContext({
+  isDark: false,
+  toggle: () => {},
+})
+
 function App() {
   const [open, toggle] = useToggle(false);
-  const value = useMemo(()=>({open,toggle}),[open,toggle])
+  const loadedTheme = load(KEY_NAME.darkMode);
+  const [isDark, darkToggle] = useToggle(loadedTheme);
+  
+  useEffect(() => {
+    save(KEY_NAME.darkMode, isDark);
+  },[isDark])
+
+  const menu = useMemo(()=>({open, toggle}),[open,toggle])
+  const theme = useMemo(()=>({isDark, toggle: darkToggle}),[isDark,darkToggle])
+
+  const classes = `${app} ${isDark && 'dark'}`
 
   return (
-    <main className={app}>
-      <MenuContext.Provider value={value}>
-        <div className={container}>
-          <Navbar />
+    <main className={classes}>
+      <ThemeContext.Provider value={theme}>
+        <MenuContext.Provider value={menu}>
+          <div className={container}>
+            <Navbar />
 
-          <Content />
-        </div>
-      </MenuContext.Provider>
+            <Content />
+          </div>
+        </MenuContext.Provider>
+      </ThemeContext.Provider>
     </main>
   );
 }
 
 export default App;
 
-interface RangeInfo {
-  maxWidth: number,
-  range:string,
-}
-
-const createMedia = (info:RangeInfo) => ` 
+const createMedia = (info:{range:string, maxWidth:number}) => ` 
   @media ${info.range} {
     max-width: ${info.maxWidth}px;
   }
@@ -44,11 +57,16 @@ const createMedia = (info:RangeInfo) => `
 
 const responsiveStyle = 
   Object.values(range)
-  .map<RangeInfo>((range,i) =>({maxWidth: CONTENT_WIDTH[i], range})).reverse()
+  .map((range,i) =>({maxWidth: CONTENT_WIDTH[i], range})).reverse()
   .reduce((style,info) => style + createMedia(info),"");
 
 const app = css`
-  background: ${color.mainColor};
+  background: ${color.main};
+
+  &.dark {
+    background: ${color_dark.main};
+    color: ${color_dark.font};
+  }
 `;
 
 const container= css`

@@ -1,9 +1,8 @@
 import { css } from "@emotion/css";
 import { MenuContext } from "App";
 import { FC, useContext } from "react";
-import { color } from "style/theme";
 
-import NavToggleButton from "../Content/Header/Components/NavToggleButton";
+import NavToggleButton from "./Components/NavToggleButton";
 import MenuList from "./MenuList";
 
 interface NavbarProps {}
