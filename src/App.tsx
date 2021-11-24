@@ -67,6 +67,10 @@ const app = css`
     background: ${color_dark.main};
     color: ${color_dark.font};
   }
+  &.dark *::selection {
+    background: #f5803e;
+    color: white;
+  }
 `;
 
 const container= css`

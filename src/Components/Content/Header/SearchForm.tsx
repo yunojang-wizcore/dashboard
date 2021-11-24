@@ -41,7 +41,7 @@ const inputCls = css`
 
   &.dark {
     background: ${color_dark.main};
-    border: 1px solid #777;
+    border: 1px solid #334455;
     color: ${color_dark.font};
   }
 
@@ -49,6 +49,6 @@ const inputCls = css`
     color: #ccccd0;
   }
   &.dark::placeholder {
-    color: #777;
+    color: #334455;
   }
 `;

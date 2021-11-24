@@ -56,7 +56,7 @@ const icon = css`
 const link = css`
   width: 8em;
   transform-origin: left;
-  animation: .2s slide cubic-bezier(0,0,0,1);
+  animation: .1s slide cubic-bezier(0,0,0,1);
   color: #5e6e82;
 
   &.dark {

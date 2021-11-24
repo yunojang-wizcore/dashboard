@@ -18,7 +18,9 @@ const Conetent: FC<ConetentProps> = () => {
   const cardClasses = `${card} ${isDark && 'dark'}`;
   const bigCardClasses = `big ${card} ${isDark && 'dark'}`;
   
-  const listDiv = (l: number, className:string) => map<number, JSX.Element>((n)=><div key={n} className={className}>Test Block</div>, range(l));
+  const listDiv = (l: number, className:string) => map<number, JSX.Element>((n)=>
+    <div key={n} className={className}><h1>Test Block</h1></div>
+  , range(l));
   
   return (
     <div className={content}>
@@ -58,7 +60,7 @@ const content = css`
 `;
 
 const mainContent = css`
-  transition: .2s cubic-bezier(0,0,0,1);
+  transition: .1s cubic-bezier(0,0,0,1);
 
   &.open {
     margin-left: 8em;
@@ -84,6 +86,11 @@ const card = css`
   border-radius: 4px;
   padding: .5em;
   box-shadow: rgba(65, 69, 88, 0.1) 0px 7px 14px 0px, rgba(0, 0, 0, 0.07) 0px 3px 6px 0px;
+
+  &>h1 {
+    font-size: 17px;
+    padding: .5em;
+  }
 
   &.big {
     min-width: 400px;
