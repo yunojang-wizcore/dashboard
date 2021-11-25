@@ -20,6 +20,7 @@ export const ThemeContext = createContext({
 
 function App() {
   const [open, toggle] = useToggle(false);
+  
   const loadedTheme = load(KEY_NAME.darkMode);
   const [isDark, darkToggle] = useToggle(loadedTheme);
   

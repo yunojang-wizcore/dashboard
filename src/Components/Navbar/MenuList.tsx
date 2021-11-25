@@ -62,8 +62,9 @@ const list = css`
   }
 
   @media (max-width :${size.labtop.min}px) {
-    transition: .2s;
+    transition: 0.2s height cubic-bezier(0,0,0,1);
     height: 0px;
+    padding: 1em 0;
 
     &.open {
       height: ${height};
