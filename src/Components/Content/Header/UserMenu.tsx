@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { css } from "@emotion/css";
-import { color } from "style/theme";
+
+import NoticeMenu from "./NoticeDropDown";
 
 interface UserMenuProps {
   
@@ -10,9 +11,8 @@ const UserMenu: FC<UserMenuProps> = () => {
 
   return (
     <ul className={userMenu}>
-      <li></li>
-      <li></li>
-      <li></li>
+      <NoticeMenu />
+      <NoticeMenu />
     </ul>
   );
 }
@@ -23,13 +23,11 @@ const userMenu = css`
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
 
   &>li {
-    width: 2em;
-    height: 2em;
-    background: ${color.test};
-    border-radius: 50%;
+    width: 1.4em;
+    height: 1.4em;
     flex: 1;
   }
 `;
