@@ -25,9 +25,15 @@ export const color_dark = {
   block : "#121e2d",
 }
 
-type QueryFunc = (m:number, c:number)=>string
+type QueryFunc = (fi:number, v:number)=> string
 
-export const createMediaQuery = (f: QueryFunc):string => {
+const f:QueryFunc = (fi, v)=>`
+  @media (min-width: ${fi}px) {
+    width: ${v}px;
+  }
+`
+
+export const mediaQueryWidth = ():string => {
   return Object.values(size).reverse()
     .reduce((style, s) => style + f(s.min, s.content),"");
 }

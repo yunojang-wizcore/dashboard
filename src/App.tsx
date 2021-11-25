@@ -1,7 +1,7 @@
 import { createContext, useEffect, useMemo } from "react";
 import { css } from "@emotion/css";
 
-import { color, color_dark, createMediaQuery } from "style/theme";
+import { color, color_dark, mediaQueryWidth } from "style/theme";
 import { KEY_NAME, load, save } from "utils/localStorage";
 import useToggle from "hooks/useToggle";
 
@@ -67,9 +67,5 @@ const container= css`
   display: flex;
   margin: auto;
 
-  ${createMediaQuery((m:number, c:number) => ` 
-    @media (min-width:${m}px) {
-      width: ${c}px;
-    }
-  `)}
+  ${mediaQueryWidth()}
 `;

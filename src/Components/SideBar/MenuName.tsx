@@ -27,6 +27,7 @@ export default MenuName;
 
 const link = css`
   width: 8em;
+  min-height: 24px;
   transform-origin: left;
   animation: .1s slideX cubic-bezier(0,0,0,1);
   color: #5e6e82;
