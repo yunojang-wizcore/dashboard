@@ -20,7 +20,7 @@ const Conetent: FC<ConetentProps> = () => {
   const classes = `${mainContent} ${open}`;
 
   const cardClasses = `${card} ${dark}`;
-  const bigCardClasses = `big ${card} ${dark}`;
+  const bigCardClasses = `${cardClasses} big`;
   
   const listDiv = (l: number, className:string) => map<number, JSX.Element>((n)=>
     <div key={n} className={className}><h1>Test Block</h1></div>

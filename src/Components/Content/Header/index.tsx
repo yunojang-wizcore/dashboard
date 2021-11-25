@@ -7,7 +7,7 @@ import { ThemeContext } from "App";
 import SearchForm from "./SearchForm";
 import UserMenu from "./UserMenu";
 import ToggleDarkButton from "./Components/ToggleDarkButton";
-import NavHeader from 'Components/Navbar/Header'
+import NavHeader from 'Components/SideBar/Header'
 
 interface HeaderProps {
   

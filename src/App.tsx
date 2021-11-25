@@ -5,7 +5,7 @@ import { color, color_dark, createMediaQuery } from "style/theme";
 import { KEY_NAME, load, save } from "utils/localStorage";
 import useToggle from "hooks/useToggle";
 
-import Navbar from "Components/Navbar";
+import SideBar from "Components/SideBar";
 import Content from "Components/Content";
 
 export const MenuContext = createContext({
@@ -38,7 +38,7 @@ function App() {
       <ThemeContext.Provider value={theme}>
         <MenuContext.Provider value={menu}>
           <div className={container}>
-            <Navbar />
+            <SideBar />
 
             <Content />
           </div>

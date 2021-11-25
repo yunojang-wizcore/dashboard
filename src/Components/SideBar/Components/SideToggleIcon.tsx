@@ -5,11 +5,11 @@ import { map, range } from 'utils/iter';
 import { ThemeContext } from "App";
 import { color_dark } from "style/theme";
 
-interface NavToggleIconProps {
+interface SideToggleIconProps {
   isOpen: boolean
 }
  
-const NavToggleIcon: FC<NavToggleIconProps> = ({isOpen}) => {
+const SideToggleIcon: FC<SideToggleIconProps> = ({isOpen}) => {
   const {isDark} = useContext(ThemeContext);
 
   const open = isOpen ? openCls : closeCls;
@@ -25,7 +25,7 @@ const NavToggleIcon: FC<NavToggleIconProps> = ({isOpen}) => {
   );
 }
  
-export default NavToggleIcon;
+export default SideToggleIcon;
 
 const defaultCls = css`
   height: 100%;

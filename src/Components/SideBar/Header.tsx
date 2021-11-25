@@ -4,7 +4,7 @@ import { css } from "@emotion/css";
 import { MenuContext } from "App";
 import { color } from "style/theme";
 
-import NavToggleButton from "./Components/NavToggleButton";
+import SideToggleButton from "./Components/SideToggleButton";
 
 interface HeaderProps {
   
@@ -15,7 +15,7 @@ const Header: FC<HeaderProps> = () => {
 
   return (
     <div className={cls}>
-      <NavToggleButton isOpen={open} onClick={toggle} />
+      <SideToggleButton isOpen={open} onClick={toggle} />
 
       <div className={logoCls}></div>
     </div>

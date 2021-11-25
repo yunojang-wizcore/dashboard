@@ -1,27 +1,27 @@
 import { FC, MouseEventHandler, useContext } from "react";
 import { css } from "@emotion/css";
 
-import NavToggleIcon from "./NavToggleIcon";
+import SideToggleIcon from "./SideToggleIcon";
 import ToggleButton from "Components/ToggleButton";
 import { ThemeContext } from "App";
 
-interface NavToggleButtonProps {
+interface SideToggleButtonProps {
   isOpen : boolean,
   onClick : MouseEventHandler
 }
  
-const NavToggleButton: FC<NavToggleButtonProps> = ({onClick, isOpen}) => {
+const SideToggleButton: FC<SideToggleButtonProps> = ({onClick, isOpen}) => {
   const {isDark} = useContext(ThemeContext);
   const classes = `${cls} ${isDark && 'dark'}`;
 
   return (
     <ToggleButton onClick={onClick}  className={classes}>
-      <NavToggleIcon isOpen={isOpen}/>
+      <SideToggleIcon isOpen={isOpen}/>
     </ToggleButton>
   );
 }
  
-export default NavToggleButton;
+export default SideToggleButton;
 
 const cls = css`
   position: relative;
