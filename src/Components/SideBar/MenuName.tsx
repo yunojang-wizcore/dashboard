@@ -24,7 +24,7 @@ export default MenuName;
 const link = css`
   min-height: 24px;
   font-weight: bold;
-  transition: 0.1s cubic-bezier(0,0,0,1);
+  transition: .2s cubic-bezier(0,0,0,1);
   overflow : hidden;
 
   @media (max-width :${size.labtop.min}px) {

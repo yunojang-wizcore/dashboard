@@ -67,7 +67,7 @@ const content = css`
 `;
 
 const mainContent = css`
-  transition: .1s cubic-bezier(0,0,0,1);
+  transition: .2s cubic-bezier(0,0,0,1);
 
   &.open {
     margin-left: 8em;
