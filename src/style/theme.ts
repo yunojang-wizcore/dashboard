@@ -16,7 +16,8 @@ export const range = {
 
 export const color = {
   main: '#edf2f9',
-  test: "#2c7be5"
+  test: "#2c7be5",
+  font: "#5e6e82",
 }
 
 export const color_dark = {

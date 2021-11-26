@@ -1,48 +1,36 @@
-import { FC, useContext, useEffect, useRef } from "react";
+import { FC, useRef } from "react";
+import { css } from "@emotion/css";
 
+import Theme from "types/theme";
+import useDetectOusideClick from "hooks/useDetectOutsideClick";
+import noticeList from 'mock/notice';
 import { color, color_dark } from "style/theme";
 
-import { ThemeContext } from "App";
 import {ReactComponent as Icon} from 'asset/bell.svg'
-import useToggle from "hooks/useToggle";
-import noticeList from 'mock/notice';
-import { css } from "@emotion/css";
+
+interface NoticeDropDownProps {
+  theme: Theme
+}
  
-const NoticeDropDown: FC = () => {
+const NoticeDropDown: FC<NoticeDropDownProps> = ({ theme }) => {
   const dropdownRef = useRef<HTMLElement>(null);
-  const [isActive, toggleActive, setActive] = useToggle(false);
+  const [isActive, setIsActive] = useDetectOusideClick(dropdownRef.current,false);
 
-  const onClick = () => toggleActive();
+  const onClick = () => setIsActive(!isActive);
 
-  useEffect(()=> {
-    const clickEvent = (e:MouseEvent) => {
-      const target = e.target as Node|null;
+  const fill = theme === Theme.DARK ? color_dark.font : color.font;
 
-      if (dropdownRef.current && !dropdownRef.current.contains(target)) {
-        setActive(false)
-      }
-    }
-
-    if (isActive) {
-      window.addEventListener('click', clickEvent);
-    }
-
-    return () => {
-      window.removeEventListener('click', clickEvent);
-    }
-  },[isActive, setActive])
-
-  const {isDark} = useContext(ThemeContext);
-  const fill = isDark ? color_dark.font : color.font;
+  const dark = theme === Theme.DARK ? darkCls : dayCls;
+  const dropDownClasses = `${dropdown} ${isActive ? 'active': 'inactive'} ${dark}`;
 
   return (
-    <li className={container}>
-      <button onClick={onClick}>
+    <li className={container} onClick={onClick}>
+      <button>
         <Icon fill={fill} x="24" y="24"/>
       </button>
-      <nav ref={dropdownRef} className={`${menu} ${isActive ? 'active': 'inactive'}`} >
+      <nav ref={dropdownRef} className={dropDownClasses} >
         <ul>
-          {noticeList.map((n,i)=> <li key={i}> <a href='/'>{n.message}</a> </li>)}
+          {noticeList.map((n,i)=> <li key={i}> {n.message} </li>)}
         </ul>
       </nav>
     </li>
@@ -55,16 +43,14 @@ const container = css`
   position: relative;
 `;
 
-const menu = css`
+const dropdown = css`
   position: absolute;
   top: 2em;
   right: 0;
-  min-width: 200px;
+  min-width: 12em;
 
-  background: #fff;
   border-radius: 4px;
   box-shadow: 0 1px 8px rgba(0,0,0,0.3);
-  
   
   transition: .1s cubic-bezier(0,0,0,1);
 
@@ -82,11 +68,22 @@ const menu = css`
   }
 
   li+li {
-    border-top: 1px solid #ddd;
+    border-top: 1px solid;
   }
 
-  li> a {
+  li {
     padding: 0.5em 1em;
-    display: block;
   }
+`;
+
+const darkCls = css`
+  background: ${color_dark.block};
+  color: ${color_dark.font};
+  border-color: ${color_dark.font};
+`;
+
+const dayCls = css`
+  background: #fff;
+  color: ${color.font};
+  border-color: ${color.font};
 `;

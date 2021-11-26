@@ -45,7 +45,8 @@ const header = css`
   padding: 0.8em 0.5em;
   padding-left: 11em;
   opacity: 0.95;
-  background: ${color.main};
+  background: ${color.main}; 
+  box-shadow: 0px 4px 5px -5px rgba(0,0,0,0.2);
 
   display: flex;
   align-items: center;
@@ -53,9 +54,7 @@ const header = css`
   @media (max-width :${size.labtop.min}px) {
     padding-left: 0;
     z-index: 20;
-    box-shadow: 0px 10px 5px -5px rgba(50,50,50,0.1);
   }
-
 
   &.dark{ 
     background: ${color_dark.main};

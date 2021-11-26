@@ -1,18 +1,23 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 import { css } from "@emotion/css";
 
 import NoticeMenu from "./NoticeDropDown";
+import { ThemeContext } from "App";
+import Theme from "types/theme";
 
 interface UserMenuProps {
   
 }
  
 const UserMenu: FC<UserMenuProps> = () => {
+  const { isDark } = useContext(ThemeContext);
+
+  const theme = isDark ? Theme.DARK : Theme.DAY;
 
   return (
     <ul className={userMenu}>
-      <NoticeMenu />
-      <NoticeMenu />
+      <NoticeMenu theme={theme}/>
+      <NoticeMenu theme={theme}/>
     </ul>
   );
 }
