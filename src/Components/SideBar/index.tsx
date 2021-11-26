@@ -9,13 +9,13 @@ import Header from "./Header";
 interface SideBarProps {}
  
 const SideBar: FC<SideBarProps> = () => {
-  const {open} = useContext(MenuContext);
+  const { isOpen } = useContext(MenuContext);
 
   return (
     <aside className={asideCls}>
       <Header />
 
-      <MenuList isOpen={open}/>
+      <MenuList isOpen={isOpen}/>
     </aside>
   );
 }

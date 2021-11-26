@@ -11,11 +11,11 @@ interface HeaderProps {
 }
  
 const Header: FC<HeaderProps> = () => {
-  const {open, toggle} = useContext(MenuContext);
+  const { isOpen, toggle } = useContext(MenuContext);
 
   return (
     <div className={cls}>
-      <SideToggleButton isOpen={open} onClick={toggle} />
+      <SideToggleButton isOpen={isOpen} onClick={toggle} />
 
       <div className={logoCls}></div>
     </div>

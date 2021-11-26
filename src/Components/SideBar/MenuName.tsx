@@ -9,7 +9,7 @@ interface MenuNameProps {
 }
  
 const MenuName: FC<MenuNameProps> = ({name}) => {
-  const { open: isOpen } = useContext(MenuContext);
+  const { isOpen } = useContext(MenuContext);
 
   const open = isOpen ? openCls : closeCls;
   const linkCls = `${link} ${open}`;

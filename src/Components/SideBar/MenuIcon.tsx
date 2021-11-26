@@ -11,7 +11,7 @@ interface MenuIconProps {
  
 const MenuIcon: FC<MenuIconProps> = ({Icon}) => {
   const { theme } = useContext(ThemeContext);
-  const { open: isOpen, toggle } = useContext(MenuContext);
+  const { isOpen, toggle } = useContext(MenuContext);
 
   const isDark = theme === Theme.DARK;
   const dark = isDark ? 'dark' : '';

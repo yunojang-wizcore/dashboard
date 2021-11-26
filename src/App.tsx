@@ -10,7 +10,7 @@ import Content from "Components/Content";
 import Theme from "types/theme";
 
 export const MenuContext = createContext({
-  open: false,
+  isOpen: false,
   toggle: () => {},
 });
 
@@ -20,8 +20,8 @@ export const ThemeContext = createContext({
 })
 
 function App() {
-  const [open, toggle] = useToggle(false);
-  const menu = useMemo(()=>({ open, toggle }),[open, toggle])
+  const [isOpen, toggle] = useToggle(false);
+  const menu = useMemo(()=>({ isOpen, toggle }),[isOpen, toggle])
   
   const loadedTheme = load(KEY_NAME.THEME);
   const [isDark, isDarkToggle] = useToggle(loadedTheme === Theme.DARK);

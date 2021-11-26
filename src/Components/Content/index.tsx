@@ -12,7 +12,7 @@ interface ConetentProps {
 }
  
 const Conetent: FC<ConetentProps> = () => {
-  const {open: isOpen} = useContext(MenuContext);
+  const {isOpen} = useContext(MenuContext);
   const { theme } = useContext(ThemeContext);
 
   const open = isOpen ? 'open' : '';
