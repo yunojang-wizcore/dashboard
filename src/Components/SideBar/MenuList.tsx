@@ -41,6 +41,8 @@ const list = css`
   display: flex;
   gap: 1em;
   padding: 0.4em 0;
+  transition: 0.2s cubic-bezier(0,0,0,1);
+  transition-property: width;
 
   &>ul {
     display: flex;
@@ -49,9 +51,9 @@ const list = css`
   }
 
   @media (max-width :${size.labtop.min}px) {
-    opacity: 0.95;
-    
     ${mediaQueryWidth()}
+    transition-property: height;
+    opacity: 0.95;
   }  
 
   ::-webkit-scrollbar {
@@ -67,7 +69,6 @@ const openCls = css`
   overflow-y: scroll;
 
   @media (max-width :${size.labtop.min}px) {
-    transition: 0.2s height cubic-bezier(0,0,0,1);
     height: ${height};
     padding: 1em 0;
   }
@@ -78,7 +79,8 @@ const closeCls = css`
 
   @media (max-width :${size.labtop.min}px) {
     height: 0 !important;
-    padding: 0;
+    padding: 0 !important;
+    transition: none;
   }
 `;
 

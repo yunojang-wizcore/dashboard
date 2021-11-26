@@ -16,8 +16,6 @@ const Header: FC<HeaderProps> = () => {
   return (
     <div className={cls}>
       <SideToggleButton isOpen={isOpen} onClick={toggle} />
-
-      <div className={logoCls}></div>
     </div>
   );
 }
@@ -31,11 +29,3 @@ const cls = css`
   gap: 1em;
   align-items: center;
 `;
-
-const logoCls = css`
-  width: 100px;
-  height: 38px;
-  margin-right: 1.6em;
-  border-radius: 6px;
-  background: ${color.test};
-`

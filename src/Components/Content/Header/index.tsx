@@ -26,6 +26,7 @@ const Header: FC<HeaderProps> = () => {
         <NavHeader />
       </div>
 
+      <div className={logoWrapper}/>
       <SearchForm />
 
       <div className={menuCls}>
@@ -44,18 +45,13 @@ const header = css`
   width: 100%;
   height: 70px;
   padding: 0.8em 0.5em;
-  padding-left: 11em;
   opacity: 0.95;
   background: ${color.main}; 
   box-shadow: 0px 4px 5px -5px rgba(0,0,0,0.2);
 
   display: flex;
   align-items: center;
-  
-  @media (max-width :${size.labtop.min}px) {
-    padding-left: 0;
-    z-index: 20;
-  }
+  z-index: 20;
 
   &.dark{ 
     background: ${color_dark.main};
@@ -66,6 +62,14 @@ const menuCls = css`
   display: flex;
   gap: 1em;
   margin-left: auto;
+`;
+
+const logoWrapper = css`
+  width: 100px;
+  height: 34px;
+  background: ${color.test};
+  border-radius: 10px;
+  margin-right: 2em;
 `;
 
 const tabletShow = css`

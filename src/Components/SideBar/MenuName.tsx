@@ -28,7 +28,7 @@ const link = css`
   overflow : hidden;
 
   @media (max-width :${size.labtop.min}px) {
-    animation: none;
+    transition: none;
   }
 `;
 
@@ -38,8 +38,4 @@ const openCls = css`
 
 const closeCls = css`
   width: 0;
-
-  @media (max-width :${size.labtop.min}px) {
-    transition: none;
-  }
 `;
