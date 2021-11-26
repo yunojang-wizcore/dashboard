@@ -2,7 +2,6 @@ import { FC, useContext } from "react";
 import { css } from "@emotion/css";
 
 import { MenuContext } from "App";
-import { color } from "style/theme";
 
 import SideToggleButton from "./Components/SideToggleButton";
 

@@ -1,4 +1,4 @@
-import { FC, useContext } from "react";
+import { FC, useContext, useState } from "react";
 import { css } from "@emotion/css";
 
 import Header from "./Header";
@@ -7,13 +7,15 @@ import { MenuContext, ThemeContext } from "App";
 import { color_dark, size } from "style/theme";
 import Theme from "types/theme";
 
+import Switch from "./Components/Switch";
+
 interface ConetentProps {
   
 }
  
 const Conetent: FC<ConetentProps> = () => {
-  const {isOpen} = useContext(MenuContext);
-  const { theme } = useContext(ThemeContext);
+  const { isOpen, toggle: menuToggle } = useContext(MenuContext);
+  const { theme, toggle: darkToggle } = useContext(ThemeContext);
 
   const open = isOpen ? 'open' : '';
   const dark = theme === Theme.DARK ? 'dark' : '';
@@ -25,6 +27,8 @@ const Conetent: FC<ConetentProps> = () => {
   const listDiv = (l: number, className:string) => map<number, JSX.Element>((n)=>
     <div key={n} className={className}><h1>Test Block</h1></div>
   , range(l));
+
+  const [lock, setLock] = useState(false);
   
   return (
     <div className={content}>
@@ -32,9 +36,25 @@ const Conetent: FC<ConetentProps> = () => {
 
       <div className={classes}>
         <div className={row}>
+          <div className={cardClasses}> 
+            <div className={container}>
+              <span>Menu</span>
+              <Switch checked={isOpen} onClick={menuToggle} disable={lock}/>
+
+              <span>Dark</span> 
+              <Switch checked={theme===Theme.DARK} onClick={darkToggle} disable={lock}/>
+            </div>
+
+            <div className={container}>
+              <span>Lock</span> <Switch checked={lock} onClick={()=>setLock(now=> !now)}/>
+            </div>
+
+          </div>
+
           <div className={cardClasses}></div>
+
           <div className={cardClasses}></div>
-          <div className={cardClasses}></div>
+
           <div className={cardClasses}></div>
         </div>
 
@@ -92,7 +112,7 @@ const card = css`
   flex: 1;
   background: #fff;
   border-radius: 4px;
-  padding: .5em;
+  padding: 1em 0.5em;
   box-shadow: rgba(65, 69, 88, 0.1) 0px 7px 14px 0px, rgba(0, 0, 0, 0.07) 0px 3px 6px 0px;
 
   @media (max-width: ${size.desktop.min}px) {
@@ -113,4 +133,11 @@ const card = css`
     background: ${color_dark.block};
     color: ${color_dark.font}
   }
+`;
+
+const container = css`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
 `;

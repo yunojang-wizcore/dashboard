@@ -11,7 +11,7 @@ interface ToggleDarkButtonProps {
 }
  
 const ToggleDarkButton: FC<ToggleDarkButtonProps> = ({onClick, theme}) => {
-  const tempText:string = theme;
+  const tempText:string = theme === Theme.DAY ? 'Dark' : 'Day';
   
   return (
     <ToggleButton className={cls} onClick={onClick}>
