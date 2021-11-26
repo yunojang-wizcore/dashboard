@@ -1,7 +1,7 @@
 import { FC, useContext } from "react";
 import { css } from "@emotion/css";
 
-import NoticeMenu from "./NoticeDropDown";
+import NoticeMenu from "./Components/NoticeDropDown";
 import { ThemeContext } from "App";
 
 interface UserMenuProps {

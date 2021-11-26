@@ -15,13 +15,13 @@ interface NoticeDropDownProps {
 const NoticeDropDown: FC<NoticeDropDownProps> = ({ theme }) => {
   const dropdownRef = useRef<HTMLElement>(null);
   const [isActive, setIsActive] = useDetectOusideClick(dropdownRef.current,false);
-
-  const onClick = () => setIsActive(!isActive);
-
-  const fill = theme === Theme.DARK ? color_dark.font : color.font;
-
+  
   const dark = theme === Theme.DARK ? darkCls : dayCls;
   const dropDownClasses = `${dropdown} ${isActive ? 'active': 'inactive'} ${dark}`;
+  
+  const fill = theme === Theme.DARK ? color_dark.font : color.font;
+
+  const onClick = () => setIsActive(!isActive);
 
   return (
     <li className={container} onClick={onClick}>
@@ -72,7 +72,7 @@ const dropdown = css`
   }
 
   li {
-    padding: 0.5em 1em;
+    padding: 1em;
   }
 `;
 
