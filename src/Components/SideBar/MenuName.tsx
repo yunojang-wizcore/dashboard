@@ -1,22 +1,18 @@
 import { FC, useContext } from "react";
 import { css } from "@emotion/css";
 
-import { color_dark, size } from "style/theme";
-import { ThemeContext } from "App";
+import { size } from "style/theme";
+import { MenuContext } from "App";
 
 interface MenuNameProps {
-  name:string
-  isOpen:boolean
+  name: string
 }
  
-const MenuName: FC<MenuNameProps> = ({name, isOpen}) => {
-  const {isDark} = useContext(ThemeContext);
+const MenuName: FC<MenuNameProps> = ({name}) => {
+  const { open: isOpen } = useContext(MenuContext);
 
-  const dark = isDark ? 'dark' : '';
-  const open = isOpen ? 'open' : '';
-  const linkCls = `${link} ${dark} ${open}`;
-
-  if (!isOpen) return null;
+  const open = isOpen ? openCls : closeCls;
+  const linkCls = `${link} ${open}`;
 
   return (
     <div className={linkCls}>{name}</div>
@@ -26,18 +22,24 @@ const MenuName: FC<MenuNameProps> = ({name, isOpen}) => {
 export default MenuName;
 
 const link = css`
-  width: 8em;
   min-height: 24px;
-  transform-origin: left;
-  animation: .1s slideX cubic-bezier(0,0,0,1);
-  color: #5e6e82;
   font-weight: bold;
-
-  &.dark {
-    color: ${color_dark.font};
-  }
+  transition: 0.1s cubic-bezier(0,0,0,1);
+  overflow : hidden;
 
   @media (max-width :${size.labtop.min}px) {
     animation: none;
-  }  
+  }
+`;
+
+const openCls = css`
+  width: 8em;
+`;
+
+const closeCls = css`
+  width: 0;
+
+  @media (max-width :${size.labtop.min}px) {
+    transition: none;
+  }
 `;

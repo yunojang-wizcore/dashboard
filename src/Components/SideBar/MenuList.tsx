@@ -14,34 +14,31 @@ interface MenuListProps {
 const MenuList: FC<MenuListProps> = ({isOpen}) => {
   const {isDark} = useContext(ThemeContext);
   
-  const open = isOpen ? 'open' : '';
-  const dark = isDark ? 'dark' : '';
-  const classes = `${list} ${open} ${dark}`;
+  const open = isOpen?  openCls: closeCls;
+  const dark = isDark? darkCls: dayCls;
+  const classes = `${open} ${dark} ${list}`;
 
   return (
-    <div className={classes}>
+    <nav className={classes}>
       <ul>
-        {MENU_LIST.map((menu, i) => <MenuIcon key={i} icon={menu.icon} isOpen={isOpen}/>)}
+        {MENU_LIST.map((menu, i) => <MenuIcon key={i} Icon={menu.Icon}/>)}
       </ul>
       <ul>
-        {MENU_LIST.map((menu, i) => <MenuName key={i} name={menu.name} isOpen={isOpen}/>)}
+        {MENU_LIST.map((menu, i) => <MenuName key={i} name={menu.name} />)}
       </ul>
-    </div>
+    </nav>
   );
 }
  
 export default MenuList;
 
 const height = 'calc(100vh - 70px)';
-                                                                                                                                                                                                                                                                                           
+
 const list = css`
   height: ${height};
   display: flex;
   gap: 1em;
-
-  &.open {
-    overflow-y: scroll;
-  }
+  padding: 0.4em 0;
 
   &>ul {
     display: flex;
@@ -49,36 +46,62 @@ const list = css`
     gap: 1em;
   }
 
+  @media (max-width :${size.labtop.min}px) {
+    opacity: 0.95;
+    
+    ${mediaQueryWidth()}
+  }  
+
   ::-webkit-scrollbar {
     width: 6px;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #afbac8;
     border-radius: 10px;
   }
+`;
 
-  &.dark::-webkit-scrollbar-thumb {
+const openCls = css`
+  overflow-y: scroll;
+
+  @media (max-width :${size.labtop.min}px) {
+    transition: 0.2s height cubic-bezier(0,0,0,1);
+    height: ${height};
+    padding: 1em 0;
+  }
+`;
+
+const closeCls = css`
+  overflow-y: hidden;
+
+  @media (max-width :${size.labtop.min}px) {
+    height: 0 !important;
+    padding: 0;
+  }
+`;
+
+const dayCls = css`
+  color: ${color.font};
+  background: none;
+  
+  ::-webkit-scrollbar-thumb {
+    background: #afbac8;
+  }
+
+  @media (max-width :${size.labtop.min}px) {
+    background: ${color.main};
+  }
+`;
+
+const darkCls = css`
+  color: ${color_dark.font};
+  background: none;
+
+  ::-webkit-scrollbar-thumb {
     background: #334455;
   }
 
-  /* responsive top-down menubar */
   @media (max-width :${size.labtop.min}px) {
-    height: 0px;
-    transition: 0.2s height cubic-bezier(0,0,0,1);
-    opacity: 0.95;
-    
-    ${mediaQueryWidth()}
-    
-    &.open {
-      height: ${height};
-      padding: 1em 0;
-      background: ${color.main};
-      
-      &.dark {
-        background: ${color_dark.main};
-      }
-    }
-    
-  }  
+    background: ${color_dark.main};
+  }
 `;

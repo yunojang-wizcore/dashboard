@@ -13,7 +13,8 @@ const SideToggleIcon: FC<SideToggleIconProps> = ({isOpen}) => {
   const {isDark} = useContext(ThemeContext);
 
   const open = isOpen ? openCls : closeCls;
-  const classes = `${defaultCls} ${open} ${isDark && 'dark'}`
+  const dark = isDark ? 'dark' : '';
+  const classes = `${defaultCls} ${open} ${dark}`
 
   // input number, return JSX list
   const listSpan = (l: number, className:string) => map<number, JSX.Element>((n)=><span key={n} className={className}/>, range(l));
