@@ -7,23 +7,20 @@ import {ReactComponent as Icon} from 'asset/bell.svg'
 import useToggle from "hooks/useToggle";
 import noticeList from 'mock/notice';
 import { css } from "@emotion/css";
-
-interface NoticeDropDownProps {
-  
-}
  
-const NoticeDropDown: FC<NoticeDropDownProps> = () => {
-  const dropdownRef = useRef(null);
-  const [isActive, toggleActive] = useToggle(false);
-
-  const {isDark} = useContext(ThemeContext);
-  const fill = isDark ? color_dark.font : color.font;
+const NoticeDropDown: FC = () => {
+  const dropdownRef = useRef<HTMLElement>(null);
+  const [isActive, toggleActive, setActive] = useToggle(false);
 
   const onClick = () => toggleActive();
 
   useEffect(()=> {
     const clickEvent = (e:MouseEvent) => {
-      console.log(e);
+      const target = e.target as Node|null;
+
+      if (dropdownRef.current && !dropdownRef.current.contains(target)) {
+        setActive(false)
+      }
     }
 
     if (isActive) {
@@ -33,8 +30,10 @@ const NoticeDropDown: FC<NoticeDropDownProps> = () => {
     return () => {
       window.removeEventListener('click', clickEvent);
     }
+  },[isActive, setActive])
 
-  },[isActive])
+  const {isDark} = useContext(ThemeContext);
+  const fill = isDark ? color_dark.font : color.font;
 
   return (
     <li className={container}>
@@ -62,18 +61,24 @@ const menu = css`
   right: 0;
   min-width: 200px;
 
-  visibility: hidden;
-  opacity: 0;
   background: #fff;
   border-radius: 4px;
   box-shadow: 0 1px 8px rgba(0,0,0,0.3);
+  
+  
   transition: .1s cubic-bezier(0,0,0,1);
-  transform: translateY(-20px);
 
   &.active {
-    opacity: 1;
     visibility: visible;
+    opacity: 1;
     transform: translateY(0);
+  }
+
+  &.inactive {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: none;
   }
 
   li+li {

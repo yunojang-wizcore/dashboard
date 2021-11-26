@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 
-type returnType = [boolean, ()=>void];
+type returnType = [boolean, ()=>void, Dispatch<SetStateAction<boolean>>];
 
 const useToggle = (init: boolean): returnType => {
   const [isOpen, setIsOpen] = useState<boolean>(init);
@@ -10,7 +10,7 @@ const useToggle = (init: boolean): returnType => {
   }
 
   return [
-    isOpen, toggle
+    isOpen, toggle, setIsOpen
   ]
 }
 
