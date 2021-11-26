@@ -13,5 +13,5 @@ export const load = (key:KEY_NAME) => {
 }
 
 export enum KEY_NAME {
-  darkMode = 'dark-mode'
+  THEME = 'theme'
 }

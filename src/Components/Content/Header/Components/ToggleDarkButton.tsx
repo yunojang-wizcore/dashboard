@@ -1,15 +1,17 @@
 import { FC, MouseEventHandler } from "react";
-import ToggleButton from "Components/ToggleButton";
 import { css } from "@emotion/css";
+
+import ToggleButton from "Components/ToggleButton";
+import Theme from "types/theme";
 import { color } from "style/theme";
 
 interface ToggleDarkButtonProps {
-  isDark : boolean,
+  theme : Theme
   onClick : MouseEventHandler
 }
  
-const ToggleDarkButton: FC<ToggleDarkButtonProps> = ({onClick, isDark}) => {
-  const tempText:string = isDark ? 'day' : 'dark';
+const ToggleDarkButton: FC<ToggleDarkButtonProps> = ({onClick, theme}) => {
+  const tempText:string = theme;
   
   return (
     <ToggleButton className={cls} onClick={onClick}>

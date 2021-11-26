@@ -1,6 +1,7 @@
 import { FC, MouseEventHandler, useContext } from "react";
 import { css } from "@emotion/css";
 
+import Theme from "types/theme";
 import SideToggleIcon from "./SideToggleIcon";
 import ToggleButton from "Components/ToggleButton";
 import { ThemeContext } from "App";
@@ -11,8 +12,8 @@ interface SideToggleButtonProps {
 }
  
 const SideToggleButton: FC<SideToggleButtonProps> = ({onClick, isOpen}) => {
-  const {isDark} = useContext(ThemeContext);
-  const classes = `${cls} ${isDark && 'dark'}`;
+  const { theme } = useContext(ThemeContext);
+  const classes = `${cls} ${theme === Theme.DARK && 'dark'}`;
 
   return (
     <ToggleButton onClick={onClick}  className={classes}>

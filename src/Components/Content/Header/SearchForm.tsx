@@ -3,14 +3,15 @@ import { css } from "@emotion/css";
 
 import { color_dark, size } from "style/theme";
 import { ThemeContext } from "App";
+import Theme from "types/theme";
 
 interface SearchFormProps {
   
 }
  
 const SearchForm: FC<SearchFormProps> = () => {
-  const {isDark} = useContext(ThemeContext);
-  const inputClasses = `${inputCls} ${isDark && 'dark'}`;
+  const { theme } = useContext(ThemeContext);
+  const inputClasses = `${inputCls} ${theme === Theme.DARK && 'dark'}`;
 
   return (
     <form className={formCls}>
@@ -31,14 +32,15 @@ const formCls = css`
 `;
 
 const inputCls = css`
-  padding: 0 2rem;
-  height: 90%;
   width: 100%;
+  height: 90%;
+  padding: 0 2rem;
   line-height: 1.7;
+  font-size: 18px;
+  
   border-radius: 50rem;
   border: 1px solid #ccc;
-  font-size: 18px;
-
+  
   &.dark {
     background: ${color_dark.main};
     border: 1px solid #334455;
@@ -48,6 +50,7 @@ const inputCls = css`
   &::placeholder {
     color: #ccccd0;
   }
+
   &.dark::placeholder {
     color: #334455;
   }

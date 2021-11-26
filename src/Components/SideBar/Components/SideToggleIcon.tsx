@@ -4,16 +4,17 @@ import { css } from "@emotion/css";
 import { map, range } from 'utils/iter';
 import { ThemeContext } from "App";
 import { color_dark } from "style/theme";
+import Theme from "types/theme";
 
 interface SideToggleIconProps {
   isOpen: boolean
 }
  
 const SideToggleIcon: FC<SideToggleIconProps> = ({isOpen}) => {
-  const {isDark} = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
 
   const open = isOpen ? openCls : closeCls;
-  const dark = isDark ? 'dark' : '';
+  const dark = theme === Theme.DARK ? 'dark' : '';
   const classes = `${defaultCls} ${open} ${dark}`
 
   // input number, return JSX list

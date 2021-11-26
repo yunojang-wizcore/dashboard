@@ -7,6 +7,7 @@ import useToggle from "hooks/useToggle";
 
 import SideBar from "Components/SideBar";
 import Content from "Components/Content";
+import Theme from "types/theme";
 
 export const MenuContext = createContext({
   open: false,
@@ -14,22 +15,21 @@ export const MenuContext = createContext({
 });
 
 export const ThemeContext = createContext({
-  isDark: false,
+  theme: Theme.DAY,
   toggle: () => {},
 })
 
 function App() {
   const [open, toggle] = useToggle(false);
+  const menu = useMemo(()=>({ open, toggle }),[open, toggle])
   
-  const loadedTheme = load(KEY_NAME.darkMode);
-  const [isDark, darkToggle] = useToggle(loadedTheme);
+  const loadedTheme = load(KEY_NAME.THEME);
+  const [isDark, isDarkToggle] = useToggle(loadedTheme === Theme.DARK);
+  const theme = useMemo(()=>({theme: isDark ? Theme.DARK : Theme.DAY, toggle: isDarkToggle}),[isDark, isDarkToggle])
   
   useEffect(() => {
-    save(KEY_NAME.darkMode, isDark);
+    save(KEY_NAME.THEME, isDark ? Theme.DARK : Theme.DAY);
   },[isDark])
-
-  const menu = useMemo(()=>({open, toggle}),[open,toggle])
-  const theme = useMemo(()=>({isDark, toggle: darkToggle}),[isDark,darkToggle])
 
   const classes = `${app} ${isDark && 'dark'}`
 
@@ -55,7 +55,6 @@ const app = css`
 
   &.dark {
     background: ${color_dark.main};
-    color: ${color_dark.font};
   }
   &.dark *::selection {
     background: #f5803e;
@@ -67,5 +66,5 @@ const container= css`
   display: flex;
   margin: auto;
 
-  ${mediaQueryWidth()}
+  ${mediaQueryWidth()}  
 `;

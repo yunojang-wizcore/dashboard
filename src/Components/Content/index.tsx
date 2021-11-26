@@ -5,20 +5,20 @@ import Header from "./Header";
 import { map, range } from "utils/iter";
 import { MenuContext, ThemeContext } from "App";
 import { color_dark, size } from "style/theme";
+import Theme from "types/theme";
 
 interface ConetentProps {
   
 }
  
 const Conetent: FC<ConetentProps> = () => {
-  const {open :isOpen} = useContext(MenuContext);
-  const {isDark} = useContext(ThemeContext);
+  const {open: isOpen} = useContext(MenuContext);
+  const { theme } = useContext(ThemeContext);
 
-  const dark = isDark ? 'dark' : '';
   const open = isOpen ? 'open' : '';
+  const dark = theme === Theme.DARK ? 'dark' : '';
 
   const classes = `${mainContent} ${open}`;
-
   const cardClasses = `${card} ${dark}`;
   const bigCardClasses = `${cardClasses} big`;
   
@@ -32,7 +32,10 @@ const Conetent: FC<ConetentProps> = () => {
 
       <div className={classes}>
         <div className={row}>
-          {listDiv(4, cardClasses)}
+          <div className={cardClasses}></div>
+          <div className={cardClasses}></div>
+          <div className={cardClasses}></div>
+          <div className={cardClasses}></div>
         </div>
 
         <div className={row}>

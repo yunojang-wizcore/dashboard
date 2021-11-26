@@ -8,15 +8,16 @@ import SearchForm from "./SearchForm";
 import UserMenu from "./UserMenu";
 import ToggleDarkButton from "./Components/ToggleDarkButton";
 import NavHeader from 'Components/SideBar/Header'
+import Theme from "types/theme";
 
 interface HeaderProps {
   
 }
  
 const Header: FC<HeaderProps> = () => {
-  const {isDark, toggle} = useContext(ThemeContext);
+  const { theme, toggle } = useContext(ThemeContext);
 
-  const dark = isDark ? 'dark' : '';
+  const dark = theme === Theme.DARK ? 'dark' : '';
   const headerCls = `${header} ${dark}`;
 
   return (
@@ -28,7 +29,7 @@ const Header: FC<HeaderProps> = () => {
       <SearchForm />
 
       <div className={menuCls}>
-        <ToggleDarkButton isDark={isDark} onClick={toggle} />
+        <ToggleDarkButton theme={theme} onClick={toggle} />
         <UserMenu />
       </div>
     </header>

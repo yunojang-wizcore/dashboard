@@ -1,21 +1,23 @@
 import { FC, useContext } from "react";
 import { css } from "@emotion/css";
 
-import MENU_LIST from "mock/menuList";
-import MenuName from "./MenuName";
 import { ThemeContext } from "App";
-import MenuIcon from "./MenuIcon";
+import Theme from "types/theme";
+import MENU_LIST from "mock/menuList";
 import { color, color_dark, mediaQueryWidth, size } from "style/theme";
+
+import MenuIcon from "./MenuIcon";
+import MenuName from "./MenuName";
 
 interface MenuListProps {
   isOpen: boolean
 }
  
 const MenuList: FC<MenuListProps> = ({isOpen}) => {
-  const {isDark} = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   
   const open = isOpen?  openCls: closeCls;
-  const dark = isDark? darkCls: dayCls;
+  const dark = theme === Theme.DARK ? darkCls: dayCls;
   const classes = `${open} ${dark} ${list}`;
 
   return (

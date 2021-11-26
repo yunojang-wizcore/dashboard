@@ -1,6 +1,8 @@
-import { css } from "@emotion/css";
-import { MenuContext, ThemeContext } from "App";
 import { FC, useContext } from "react";
+import { css } from "@emotion/css";
+
+import Theme from "types/theme";
+import { MenuContext, ThemeContext } from "App";
 import { color, color_dark, size } from "style/theme";
 
 interface MenuIconProps {
@@ -8,14 +10,15 @@ interface MenuIconProps {
 }
  
 const MenuIcon: FC<MenuIconProps> = ({Icon}) => {
-  const { isDark } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   const { open: isOpen, toggle } = useContext(MenuContext);
 
+  const isDark = theme === Theme.DARK;
   const dark = isDark ? 'dark' : '';
   const open = isOpen ? 'open' : '';
   const classes = `${cls} ${dark} ${open}`;
 
-  const fill = isDark ? color_dark.font : color.font ;
+  const svgFill = isDark ? color_dark.font : color.font ;
 
   const onClick = () => {
     if (isOpen) return;
@@ -25,7 +28,7 @@ const MenuIcon: FC<MenuIconProps> = ({Icon}) => {
 
   return (
     <div className={classes} onClick={onClick}>
-      <Icon fill={fill} />
+      <Icon fill={svgFill} />
     </div>
   );
 }
